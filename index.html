@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI LinkedIn Engagement Tool</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Ambient background blobs -->
+  <div class="ambient">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </div>
+      <span class="logo-text">LinkedAI</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="#generate" class="nav-item active" data-section="generate">
+        <span class="nav-icon">✦</span>
+        Comment Generator
+      </a>
+      <a href="#analyze" class="nav-item" data-section="analyze">
+        <span class="nav-icon">◈</span>
+        Viral Analyzer
+      </a>
+      <a href="#reply" class="nav-item" data-section="reply">
+        <span class="nav-icon">◎</span>
+        Reply Generator
+      </a>
+      <a href="#history" class="nav-item" data-section="history">
+        <span class="nav-icon">▣</span>
+        History
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="api-status" id="apiStatus">
+        <span class="status-dot"></span>
+        <span class="status-text">Connecting...</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main">
+
+    <!-- Header -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <h1 class="page-title" id="pageTitle">Comment Generator</h1>
+        <p class="page-subtitle" id="pageSubtitle">Craft professional LinkedIn comments powered by AI</p>
+      </div>
+      <div class="topbar-right">
+        <div class="badge">GPT-3.5 Turbo</div>
+      </div>
+    </header>
+
+    <!-- SECTION: Generate Comment -->
+    <section class="section active" id="section-generate">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon generate-icon">✦</div>
+          <div>
+            <h2 class="card-title">Generate a Comment</h2>
+            <p class="card-desc">Paste any LinkedIn post and get a smart, professional comment instantly.</p>
+          </div>
+        </div>
+        <textarea class="textarea" id="generateInput" placeholder="Paste a LinkedIn post here...&#10;&#10;Example: 'Excited to announce that we just closed our Series A round...'" rows="6"></textarea>
+        <div class="card-actions">
+          <button class="btn btn-primary" id="generateBtn">
+            <span class="btn-icon">✦</span> Generate Comment
+          </button>
+          <span class="char-count" id="generateCount">0 characters</span>
+        </div>
+        <div class="result-box hidden" id="generateResult">
+          <div class="result-header">
+            <span class="result-label">Generated Comment</span>
+            <button class="copy-btn" data-target="generateResultText">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy
+            </button>
+          </div>
+          <p class="result-text" id="generateResultText"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: Viral Analyzer -->
+    <section class="section hidden" id="section-analyze">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon analyze-icon">◈</div>
+          <div>
+            <h2 class="card-title">Viral Post Analyzer</h2>
+            <p class="card-desc">Discover what makes a post go viral. Get a score, hook analysis, and actionable tips.</p>
+          </div>
+        </div>
+        <textarea class="textarea" id="analyzeInput" placeholder="Paste a LinkedIn post to analyze...&#10;&#10;Find out its virality score, hook strength, and how to improve it." rows="6"></textarea>
+        <div class="card-actions">
+          <button class="btn btn-secondary" id="analyzeBtn">
+            <span class="btn-icon">◈</span> Analyze Post
+          </button>
+          <span class="char-count" id="analyzeCount">0 characters</span>
+        </div>
+        <div class="result-box hidden" id="analyzeResult">
+          <div class="result-header">
+            <span class="result-label">Analysis Report</span>
+            <button class="copy-btn" data-target="analyzeResultText">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy
+            </button>
+          </div>
+          <div class="analysis-grid">
+            <div class="metric-card">
+              <div class="metric-label">Virality Score</div>
+              <div class="metric-value" id="viralityScore">—</div>
+              <div class="score-bar"><div class="score-fill" id="scoreFill"></div></div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Hook Strength</div>
+              <div class="metric-value hook-val" id="hookStrength">—</div>
+            </div>
+          </div>
+          <div class="suggestions-box">
+            <div class="suggestions-label">Improvement Suggestions</div>
+            <ul class="suggestions-list" id="suggestionsList"></ul>
+          </div>
+          <p class="result-text hidden" id="analyzeResultText"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: Reply Generator -->
+    <section class="section hidden" id="section-reply">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon reply-icon">◎</div>
+          <div>
+            <h2 class="card-title">Reply Generator</h2>
+            <p class="card-desc">Paste any LinkedIn comment and generate a thoughtful, engaging reply.</p>
+          </div>
+        </div>
+        <textarea class="textarea" id="replyInput" placeholder="Paste a LinkedIn comment you want to reply to...&#10;&#10;Example: 'Great point! I've been thinking about this too...'" rows="6"></textarea>
+        <div class="card-actions">
+          <button class="btn btn-tertiary" id="replyBtn">
+            <span class="btn-icon">◎</span> Generate Reply
+          </button>
+          <span class="char-count" id="replyCount">0 characters</span>
+        </div>
+        <div class="result-box hidden" id="replyResult">
+          <div class="result-header">
+            <span class="result-label">Generated Reply</span>
+            <button class="copy-btn" data-target="replyResultText">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy
+            </button>
+          </div>
+          <p class="result-text" id="replyResultText"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: History -->
+    <section class="section hidden" id="section-history">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon history-icon">▣</div>
+          <div>
+            <h2 class="card-title">Saved History</h2>
+            <p class="card-desc">All your previously generated comments, analyses, and replies.</p>
+          </div>
+        </div>
+        <div class="card-actions" style="margin-bottom: 1.5rem;">
+          <button class="btn btn-ghost" id="refreshHistory">↻ Refresh</button>
+        </div>
+        <div id="historyList" class="history-list">
+          <div class="empty-state">
+            <span class="empty-icon">▣</span>
+            <p>No history yet. Generate some comments first!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Toast notification -->
+  <div class="toast hidden" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
