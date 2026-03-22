@@ -145,11 +145,12 @@ document.getElementById('analyzeBtn').addEventListener('click', async () => {
   resultBox.classList.add('hidden');
 
   try {
-    const res = await fetch(`${API_BASE}/comments/analyze`, {
+    const res = await fetch(`${API_BASE}/api/comments/analyze`, { // ✅ fixed path
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ postText }),
     });
+
     const data = await res.json();
     if (!res.ok || !data.success) throw new Error(data.message || 'Failed');
 
@@ -173,12 +174,12 @@ document.getElementById('analyzeBtn').addEventListener('click', async () => {
     resultBox.classList.remove('hidden');
     showToast('Analysis complete!');
   } catch (err) {
+    console.error('Error fetching:', err);
     showToast(err.message || 'Something went wrong.', 'error');
   } finally {
     setLoading(btn, false);
   }
 });
-
 // ===== GENERATE REPLY =====
 document.getElementById('replyBtn').addEventListener('click', async () => {
   const btn = document.getElementById('replyBtn');
