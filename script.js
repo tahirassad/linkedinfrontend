@@ -45,7 +45,7 @@ async function checkApiStatus() {
   const dot  = document.querySelector('.status-dot');
   const text = document.querySelector('.status-text');
   try {
-    const res = await fetch(`${API_BASE}/health`);
+    const res = await fetch(`${API_BASE}/api/health`);
     if (res.ok) {
       dot.classList.add('online');
       dot.classList.remove('offline');
@@ -116,7 +116,7 @@ document.getElementById('generateBtn').addEventListener('click', async () => {
   resultBox.classList.add('hidden');
 
   try {
-    const res = await fetch(`${API_BASE}/comments/generate`, {
+    const res = await fetch(`${API_BASE}/api/comments/generate`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ postText }),
@@ -193,7 +193,7 @@ document.getElementById('replyBtn').addEventListener('click', async () => {
   resultBox.classList.add('hidden');
 
   try {
-    const res = await fetch(`${API_BASE}/comments/reply`, {
+    const res = await fetch(`${API_BASE}/api/comments/reply`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ postText }),
