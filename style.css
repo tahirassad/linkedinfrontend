@@ -618,10 +618,7 @@ body {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-  .sidebar { display: none; }
-  .main { margin-left: 0; }
-  .topbar { padding: 1.25rem 1.5rem; }
-  .section { padding: 1.5rem; }
-  .analysis-grid { grid-template-columns: 1fr; }
-  .card { padding: 1.5rem; }
+  .mobile-nav { display: flex; justify-content: space-around; margin-bottom: 1rem; }
+  .sidebar { display: none; } /* still hide original sidebar */
+}
 }
