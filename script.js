@@ -26,7 +26,10 @@ navItems.forEach(item => {
     if (section === 'history') loadHistory();
   });
 });
-
+function showSection(name) {
+  document.querySelectorAll('.section').forEach(sec => sec.classList.add('hidden'));
+  document.getElementById(name + 'Section').classList.remove('hidden');
+}
 // ===== CHARACTER COUNTERS =====
 function setupCharCount(textareaId, countId) {
   const ta = document.getElementById(textareaId);
