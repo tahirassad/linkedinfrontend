@@ -1,4 +1,4 @@
-const API_BASE = 'https://linkedin-tllc.onrender.com';
+const API_BASE = 'https://linkedinbackend-sj0l.onrender.com';
 
 // ===== NAVIGATION =====
 const navItems = document.querySelectorAll('.nav-item');
