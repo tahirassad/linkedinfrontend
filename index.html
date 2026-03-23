@@ -17,7 +17,20 @@
     <div class="blob blob-3"></div>
   </div>
 
-  <!-- Sidebar -->
+  <!-- Mobile Top Bar -->
+  <header class="mobile-topbar">
+    <div class="mobile-logo">
+      <div class="logo-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </div>
+      <span class="logo-text">LinkedAI</span>
+    </div>
+    <div class="mobile-api-status">
+      <span class="status-dot" id="mobileStatusDot"></span>
+    </div>
+  </header>
+
+  <!-- Sidebar (desktop) -->
   <aside class="sidebar">
     <div class="sidebar-logo">
       <div class="logo-icon">
@@ -47,8 +60,8 @@
 
     <div class="sidebar-footer">
       <div class="api-status" id="apiStatus">
-        <span class="status-dot"></span>
-        <span class="status-text">Connecting...</span>
+        <span class="status-dot" id="desktopStatusDot"></span>
+        <span class="status-text" id="statusText">Connecting...</span>
       </div>
     </div>
   </aside>
@@ -56,16 +69,17 @@
   <!-- Main content -->
   <main class="main">
 
-    <!-- Header -->
+    <!-- Header (desktop) -->
     <header class="topbar">
       <div class="topbar-left">
         <h1 class="page-title" id="pageTitle">Comment Generator</h1>
         <p class="page-subtitle" id="pageSubtitle">Craft professional LinkedIn comments powered by AI</p>
       </div>
       <div class="topbar-right">
-        <div class="badge">GPT-3.5 Turbo</div>
+        <div class="badge">Claude AI</div>
       </div>
     </header>
+
     <!-- SECTION: Generate Comment -->
     <section class="section active" id="section-generate">
       <div class="card">
@@ -194,6 +208,26 @@
     </section>
 
   </main>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="mobile-bottom-nav">
+    <a class="mobile-nav-item active" data-section="generate">
+      <span class="mobile-nav-icon">✦</span>
+      <span class="mobile-nav-label">Generate</span>
+    </a>
+    <a class="mobile-nav-item" data-section="analyze">
+      <span class="mobile-nav-icon">◈</span>
+      <span class="mobile-nav-label">Analyze</span>
+    </a>
+    <a class="mobile-nav-item" data-section="reply">
+      <span class="mobile-nav-icon">◎</span>
+      <span class="mobile-nav-label">Reply</span>
+    </a>
+    <a class="mobile-nav-item" data-section="history">
+      <span class="mobile-nav-icon">▣</span>
+      <span class="mobile-nav-label">History</span>
+    </a>
+  </nav>
 
   <!-- Toast notification -->
   <div class="toast hidden" id="toast"></div>
