@@ -218,7 +218,7 @@ async function loadHistory() {
   container.innerHTML = `<div class="empty-state"><span class="empty-icon">↻</span><p>Loading history...</p></div>`;
 
   try {
-    const res = await fetch(`${API_BASE}/comments`);
+    const res = await fetch(`${API_BASE}/api/comments`);
     const data = await res.json();
     if (!res.ok || !data.success) throw new Error(data.message || 'Failed');
 
