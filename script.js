@@ -84,16 +84,6 @@ function setLoading(btn, loading) {
     if (icon) icon.textContent = icons[section] || '✦';
   }
 }
-function showSection(name) {
-  // hide all sections
-  document.querySelectorAll('.section').forEach(sec => sec.classList.add('hidden'));
-  // show the selected section
-  document.getElementById(name + 'Section').classList.remove('hidden');
-
-  // update active button
-  document.querySelectorAll('.mobile-nav button').forEach(btn => btn.classList.remove('active'));
-  document.querySelector(`.mobile-nav button[onclick="showSection('${name}')"]`).classList.add('active');
-}
 
 // set default active section
 showSection('generate');
