@@ -83,7 +83,7 @@ async function checkApiStatus() {
     } else throw new Error();
   } catch {
     dots.forEach(d => { d.classList.add('offline'); d.classList.remove('online'); });
-    if (text) text.textContent = 'API Online';
+    if (text) text.textContent = 'API offline';
   }
 }
 checkApiStatus();
